@@ -37,10 +37,61 @@ public class HomeWork1 {
     public static class Student {
         // Напиши здесь свою реализацию класса Student
     }
+    private String name; 
+    private Integer grade; 
+     
+    public Student(String name, Integer grade) { 
+        this.name = name; 
+        this.grade = grade; 
+    } 
+     
+    public String getName() { 
+        return name; 
+    } 
+     
+    public Integer getGrade() { 
+        return grade; 
+    } 
+     
+    public String announce() { 
+        return name + " учится в " + grade + " классе"; 
+    } 
+
+    
+    
 
     public static class Teacher {
         // Напиши здесь свою реализацию класса Teacher
     }
+    private String name; 
+    private Student[] students = new Student[30]; 
+    private int studentCount = 0; 
+     
+    public Teacher(String name) { 
+        this.name = name; 
+    } 
+     
+    public String getName() { 
+        return name; 
+    } 
+     
+    public Student[] getStudents() { 
+        return students; 
+    } 
+     
+    public void addStudent(Student student) { 
+        if (studentCount < students.length) { 
+            students[studentCount++] = student; 
+        } 
+    } 
+     
+    public String[] rollCall() { 
+        String[] calls = new String[studentCount]; 
+        for (int i = 0; i < studentCount; i++) { 
+            calls[i] = students[i].announce(); 
+        } 
+        return calls; 
+    } 
 
     /*
     Это метод main - нажми play что бы запустить тесты
