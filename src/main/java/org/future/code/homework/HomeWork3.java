@@ -48,8 +48,46 @@ public class  HomeWork3 {
         throw new Exception();
     }
 
+import java.net.SocketException;  
+import java.io.IOException;  
+import java.nio.file.AccessDeniedException;  
+import javax.naming.directory.InvalidAttributesException; 
+import javax.management.loading.ExportException;  
+public static void raiseException(int num) throws IOException, ClassNotFoundException, AccessDeniedException, ExportException {  
+    switch(num) {  
+        case 1:  
+            throw new SocketException("SocketException");  
+        case 2:  
+            throw new ClassNotFoundException("ClassNotFoundException");  
+        case 3:  
+            throw new AccessDeniedException("AccessDeniedException");  
+        case 4:  
+            throw new ExportException("ExportException");  
+        default:  
+            throw new InvalidAttributesException("Invalid number");  
+ 
+    }  
+ 
+}
+    
     public static String catchException(Integer integer) {
         // Напиши свой код тут для задания 2
+        public static String catchException(int num) {  
+    try {  
+        raiseException(num);  
+    } catch (SocketException e) {  
+        return "SocketException";  
+    } catch (ClassNotFoundException e) {  
+        return "ClassNotFoundException";  
+    } catch (AccessDeniedException e) {  
+        return "AccessDeniedException";  
+    } catch (ExportException e) {  
+        return "ExportException";  
+    } catch (IOException | InvalidAttributesException e) {  
+        return "Unknown Exception";  
+    }  
+    return "";  
+}
         return "Exception";
     }
 
@@ -57,6 +95,7 @@ public class  HomeWork3 {
         testFirstTask();
         testSecondTask();
     }
+    
 
     /* Техническая секция - сюда писать ничего не надо */
 
