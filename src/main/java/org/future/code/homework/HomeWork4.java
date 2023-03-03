@@ -40,10 +40,23 @@ public class HomeWork4 {
 
     public static List<String> correctedList(List<String> stringList) {
         // Место для Вашего кода задания №1
+        public static List<String> correctedList(List<String> stringList) {
+   return stringList.stream()
+       .filter(str -> str.chars().noneMatch(Character::isUpperCase))
+       .collect(Collectors.toList());
+}
         return Collections.emptyList();
     }
     public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
         // Место для Вашего кода задания №2
+        public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
+    HashMap <String, Integer> delete = new HashMap<>();
+    for (Map.Entry<String, Integer> item:shopCart.entrySet()){
+        if (item.getValue() > 300) {
+            delete.put(item.getKey(), item.getValue());
+        }
+    }
+
         return shopCart;
     }
 
