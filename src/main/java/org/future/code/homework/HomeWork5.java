@@ -55,13 +55,109 @@ public class HomeWork5 {
     public static class Person {
         // Напиши здесь свою реализацию класса Person
     }
+    protected final String name;
+        protected Integer protection;
+        protected Integer health;
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getProtection() {
+            return protection;
+        }
+
+        public Integer getHealth() {
+            return health;
+        }
+
+        public Person(String name) {
+            this.name = name;
+            this.health = 50;
+            this.protection = 0;
+        }
+
+        protected Person(String name, Integer protection, Integer health) {
+            this.name = name;
+            this.protection = protection;
+            this.health = health;
+        }
+
+        String announce() {
+            return "person " + name + " имеет характеристики: "
+                    + health + " здоровья и " + protection + " защиты.";
+
+        }
+
+        void takeDamage(Integer damage) throws Exception {
+            if (damage < 0) {
+                throw new Exception();
+            }
+            int clearDamage = damage - protection;
+            if (clearDamage > health) {
+                health = 0;
+            } else {
+                health = health - (damage - protection);
+            }
+
+
+            if (health == 0) {
+                throw new PersonDead("Вы мертвы");
+            }
+            if (health < health - (damage - protection) || health < 0) {
+                throw new Exception();
+
+            }
+        }
+
+        Integer facePunch() {
+            return 1;
+        }
+    }
+
 
     public static class Mage extends Person{
         // Напиши здесь свою реализацию класса Mage (не забудь про наследование от Person)
     }
+    public Mage(String name) {
+            super(name, 15, 100);
+        }
+
+        @Override
+        String announce() {
+            return super.announce();
+        }
+
+        @Override
+        void takeDamage(Integer damage) throws Exception {
+            super.takeDamage(damage - health % 10);
+        }
+
+        Integer fireBall() {
+            return 45;
+        }
+    }
 
     public static class Archer extends Person{
         // Напиши здесь свою реализацию класса Archer (не забудь про наследование от Person)
+    }
+ public Archer(String name) {
+            super(name, 12, 120);
+        }
+
+        @Override
+        String announce() {
+            return super.announce();
+        }
+
+        @Override
+        void takeDamage(Integer damage) throws Exception {
+            super.takeDamage(damage + health % 10);
+        }
+
+        Integer shootBow(){
+            return health - 40 - health % 10;
+        }
     }
 
     /*
