@@ -40,10 +40,30 @@ public class HomeWork2 {
 
     public static void validateLogin(String login) {
         //Место для Вашего кода из пункта 2
+        class LoginValidationException extends Exception { 
+    public LoginValidationException(String message) { 
+        super(message); 
+    } 
+} 
+ 
+public class LoginValidator { 
+    public static void validateLogin(String login) throws LoginValidationException { 
+        Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*_)[a-zA-Z\\d_]{1,20}$"); 
+        Matcher matcher = pattern.matcher(login); 
+        if (!matcher.matches()) { 
+            throw new LoginValidationException("Login does not meet the requirements"); 
+        } 
+    } 
     }
 
     public static Boolean isLoginValid(String login) {
         //Место для Вашего кода из пункта 3
+         public static boolean isLoginValid(String login) { 
+        try { 
+            validateLogin(login); 
+            return true; 
+        } catch (LoginValidationException ex) { 
+    } 
         return false;
     }
 
